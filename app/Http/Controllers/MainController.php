@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class MainController extends Controller
 {
@@ -15,7 +16,8 @@ class MainController extends Controller
     public function index()
     {
         return view('main.articles', [
-            'articles' => Article::paginate(4)
+            'articles' => Article::paginate(4),
+            'categories' => Category::all()
         ]);
     }
 
