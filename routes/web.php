@@ -23,12 +23,16 @@ Auth::routes();
 
 
 
-Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::redirect('/admin', '/admin/articles');
-    Route::get('/admin/articles', [ AdminArticleController::class, 'index'])->name('admin.article.index');
-    Route::get('/admin/articles/create', [ AdminArticleController::class, 'create'])->name('admin.article.create');
-    Route::post('/admin/articles/store', [ AdminArticleController::class, 'store'])->name('admin.article.store');
-    Route::get('/admin/articles/{id}/edit', [ AdminArticleController::class, 'edit'])->name('admin.article.edit');
-    Route::put('/admin/articles/{id}/update', [ AdminArticleController::class, 'update'])->name('admin.article.update');
-    Route::delete('/admin/articles/{id}/delete', [ AdminArticleController::class, 'delete'])->name('admin.article.delete');
+// Route::middleware([AdminMiddleware::class])->group(function () {
+//     Route::redirect('/admin', '/admin/articles');
+//     Route::get('/admin/articles', [ AdminArticleController::class, 'index'])->name('admin.article.index');
+//     Route::get('/admin/articles/create', [ AdminArticleController::class, 'create'])->name('admin.article.create');
+//     Route::post('/admin/articles/store', [ AdminArticleController::class, 'store'])->name('admin.article.store');
+//     Route::get('/admin/articles/{id}/edit', [ AdminArticleController::class, 'edit'])->name('admin.article.edit');
+//     Route::put('/admin/articles/{id}/update', [ AdminArticleController::class, 'update'])->name('admin.article.update');
+//     Route::delete('/admin/articles/{id}/delete', [ AdminArticleController::class, 'delete'])->name('admin.article.delete');
+// });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

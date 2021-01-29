@@ -12,8 +12,9 @@
         <h5 class="text-center my-3 pt-3">{{ $article->subtitle }}</h5>
     </div>
     <div class="container">
-        <p class="text-center">
-            {!! $article->content !!}
+        <p class="text-center row justify-content-center">
+                <img class="w-25 my-5" src="{{ Voyager::image( $article->image ) }}"/>
+                {!! $article->content !!}
         </p>
     </div>
 @endsection
