@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\Auth\GithubAuthController;
 use App\Http\Controllers\Admin\AdminArticleController;
 
 /*
@@ -36,3 +37,6 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/auth/github', [GithubAuthController::class, 'auth'])->name('auth.github');
+Route::get('/auth/github/redirect', [GithubAuthController::class, 'redirect']);

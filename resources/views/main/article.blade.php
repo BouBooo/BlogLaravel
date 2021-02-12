@@ -17,4 +17,5 @@
                 {!! $article->content !!}
         </p>
     </div>
+    <x-comments :model="$article"/> 
 @endsection
